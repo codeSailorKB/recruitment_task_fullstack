@@ -18,17 +18,16 @@ const CurrenciesCalculator = ({data}) => {
     }, [firstCurrency, secondCurrency, valueToRecount]);
 
     const recalculateResult = () => {
+        setError(false);
         let firstValue = getCurrencyRate(firstCurrency, 'buy');
         let secondValue = getCurrencyRate(secondCurrency, 'sell');
+        let result = firstValue * valueToRecount / secondValue;
 
-        if (firstValue > 0 && secondValue > 0 && firstCurrency && secondCurrency) {
-            let result = firstValue * valueToRecount / secondValue;
+        setCalculatorResult(roundNumber(result, 2));
 
-            setCalculatorResult(roundNumber(result, 2));
-            setError(false);
+        if (result == 0) {
+            setError(true);
         }
-
-        setError(true);
     }
 
     const getCurrencyRate = (currencyCode, type) => {
@@ -75,8 +74,8 @@ const CurrenciesCalculator = ({data}) => {
             </table>
             {
                 error &&
-                    <span className="error-exchanging">Nie można przeliczyc walut w wybranej konfiguracji.</span>
-                    : ''
+                <span className="error-exchanging">Nie można przeliczyc walut w wybranej konfiguracji.</span>
+
             }
         </div>)
         ;
