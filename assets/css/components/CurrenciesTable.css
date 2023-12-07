@@ -54,3 +54,20 @@
 .currency-date .date-picker-label {
     margin-right: 15px;
 }
+
+.currency-calculator {
+    border: 1px solid;
+}
+
+.calculator-result {
+    font-weight: bold;
+}
+
+.currency-calculator-wrapper {
+    margin-bottom: 20px;
+}
+
+.error-exchanging {
+    margin-top: 10px;
+    color: #e30e0e;
+}

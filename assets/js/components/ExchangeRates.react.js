@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {useParams} from "react-router-dom";
 import axios from 'axios';
 import CurrenciesTable from "./ExchangeRates/CurrenciesTable.react";
+import CurrenciesCalculator from "./ExchangeRates/CurrenciesCalculator.react";
 import {formatDateObjToString} from "../utils/dates";
 import FormDatePicker from "./Form/FormDatePicker.react";
 
@@ -36,6 +37,12 @@ export default () => {
         <section className="row-section">
             <div className="container">
                 <div className="row mt-5">
+                    <div className="col-md-10 currency-calculator-wrapper">
+                        <h4 className="text-center">
+                            <span>Kalkulator walut z dnia {formatDateObjToString(currencyDate)}</span>
+                        </h4>
+                        <CurrenciesCalculator data={currenciesData} />
+                    </div>
                     <div className="col-md-10">
                         <h2 className="text-center">
                             <span>Tablica kursów walut z dnia {formatDateObjToString(currencyDate)}</span>
@@ -53,7 +60,7 @@ export default () => {
                             <div className={'text-center'}>
                                 <span className="fa fa-spin fa-spinner fa-4x"></span>
                             </div>
-                        ) : <CurrenciesTable data={currenciesData}/>
+                        ) : <CurrenciesTable data={currenciesData} />
                         }
                     </div>
                 </div>
